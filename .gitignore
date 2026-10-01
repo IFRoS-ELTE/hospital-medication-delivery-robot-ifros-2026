@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ROS workspace outputs and recorded datasets
+install/
+log/
+*.mcap
+*.db3
+*.pcap
+*.pcapng
