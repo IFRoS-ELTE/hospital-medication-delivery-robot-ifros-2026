@@ -104,10 +104,23 @@ Demonstration videos and detailed results will be added progressively.
 
 ## 7. Installation and Usage
 
-Setup instructions, dependencies, and launch commands will be added
-with the source-code release.
+### 7.1 Simulation
 
-## 8. Experimental Evaluation
+The simulation runs on Ubuntu 24.04 with ROS 2 Jazzy and Gazebo Sim.
+
+See the [Simulation Guide](simulation/README.md) for dependencies,
+workspace requirements, launch commands, and goal submission.
+
+### 7.2 Physical Robot
+
+The physical Pomona robot uses an ARM64 ROS 2 Jazzy Docker environment
+while retaining its existing Ubuntu 18.04 and ROS 1 installation.
+
+Hardware setup, sensor configuration, and mapping instructions
+will be documented in a dedicated real-robot guide.
+## 8. Real-Robot Deployment and Preliminary Results
+
+## 9. Experimental Evaluation
 
 The initial figures document mapping, obstacle inflation, and
 live costmap updates.
@@ -119,7 +132,7 @@ Further evaluation will report:
 - Number of replanning events.
 - Final position and heading errors.
 
-## 9. Limitations and Next Steps
+## 10. Limitations and Next Steps
 
 - Quantitative evaluation is still being consolidated.
 - Physical robot deployment has not yet been validated.
@@ -130,7 +143,7 @@ Further evaluation will report:
 The next steps are to archive simulation results, document the
 implementation, and evaluate integration with the physical robot.
 
-## 10. References and Acknowledgements
+## 11. References and Acknowledgements
 
 The simulation environment builds on
 [ugv_gazebo_sim](https://github.com/mattiadutto/ugv_gazebo_sim),
