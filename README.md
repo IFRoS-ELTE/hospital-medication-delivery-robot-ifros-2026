@@ -101,6 +101,33 @@ The implemented simulation pipeline includes:
 - Stand-off goal generation from the marker position.
 
 Demonstration videos and detailed results will be added progressively.
+### 6.1 RRT Planning and Waypoint Following
+
+The planner generates a path from the robot pose to a manually selected
+RViz goal using the inflated costmap. The follower tracks the waypoints
+and aligns the robot with the final goal heading.
+
+If the remaining path becomes blocked, the follower stops and the
+planner searches for a new path.
+
+
+#### 6.1.1 Static Obstacle Demonstration
+
+The robot follows an RRT-generated path around a static obstacle
+and reaches the manually selected goal.
+
+[Watch the static obstacle demonstration](VIDEO_URL_STATIC)
+
+#### 6.1.2 Dynamic Obstacle Demonstration
+
+An obstacle is introduced while the robot is moving. The robot stops
+when the remaining path becomes blocked, replans, and resumes navigation
+toward the goal.
+
+[Watch the dynamic obstacle demonstration](VIDEO_URL_DYNAMIC)
+
+Both demonstrations use manually selected RViz goals.
+ArUco-based goal generation will be documented separately.
 
 ## 7. Installation and Usage
 
