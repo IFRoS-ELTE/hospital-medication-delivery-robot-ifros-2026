@@ -1,0 +1,9 @@
+Simulation dependency:
+https://github.com/mattiadutto/ugv_gazebo_sim.git
+
+Base commit:
+d26c75098d34ec2a62bad1b4c91b9576bc4b06c4
+
+vendor_overrides/ contains project-specific files to overlay onto
+the dependency checkout, preserving their relative paths.
+Upstream files remain subject to the upstream license.
