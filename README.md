@@ -111,14 +111,14 @@ If the remaining path becomes blocked, the follower stops and the
 planner searches for a new path.
 
 
-#### 6.1.1 Static Obstacle Demonstration
+#### Static Obstacle Demonstration
 
 The robot follows an RRT-generated path around a static obstacle
 and reaches the manually selected goal.
 
 [Watch the static obstacle demonstration](VIDEO_URL_STATIC)
 
-#### 6.1.2 Dynamic Obstacle Demonstration
+#### Dynamic Obstacle Demonstration
 
 An obstacle is introduced while the robot is moving. The robot stops
 when the remaining path becomes blocked, replans, and resumes navigation
