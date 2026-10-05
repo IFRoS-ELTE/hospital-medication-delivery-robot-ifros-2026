@@ -118,7 +118,7 @@ planner searches for a new path.
 The robot follows an RRT-generated path around a static obstacle
 and reaches the manually selected goal.
 
-[Watch the static obstacle demonstration](VIDEO_URL_STATIC)
+[Watch the static obstacle demonstration](https://youtu.be/GIDDxgE9hFs)
 
 #### Dynamic Obstacle Demonstration
 
