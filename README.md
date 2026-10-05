@@ -107,6 +107,8 @@ The planner generates a path from the robot pose to a manually selected
 RViz goal using the inflated costmap. The follower tracks the waypoints
 and aligns the robot with the final goal heading.
 
+![RRT Planning and Waypoint Following](docs/images/rrt_follower_pipeline.png)
+
 If the remaining path becomes blocked, the follower stops and the
 planner searches for a new path.
 
