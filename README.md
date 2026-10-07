@@ -126,7 +126,7 @@ An obstacle is introduced while the robot is moving. The robot stops
 when the remaining path becomes blocked, replans, and resumes navigation
 toward the goal.
 
-[Watch the dynamic obstacle demonstration](VIDEO_URL_DYNAMIC)
+[Watch the dynamic obstacle demonstration]
 
 Both demonstrations use manually selected RViz goals.
 ArUco-based goal generation will be documented separately.
