@@ -12,8 +12,9 @@ waypoint tracking.
 The project investigates autonomous navigation toward delivery
 locations identified by ArUco markers.
 
-Development currently focuses on simulation. Deployment on the
-physical Pomona robot is planned as the next stage.
+Development includes simulation and preliminary testing on the
+physical Pomona robot. End-to-end ArUco-based navigation on the
+physical robot remains under development.
 
 The navigation system is intended to:
 
@@ -227,14 +228,19 @@ Further evaluation will report:
 
 ## 10. Limitations and Next Steps
 
-- Quantitative evaluation is still being consolidated.
-- Physical robot deployment has not yet been validated.
-- ROS 1 / ROS 2 integration must be resolved before deployment
-  on the current Pomona robot.
+- Quantitative evaluation is still pending.
+- Real-robot tests have demonstrated RRT navigation around static
+  obstacles and replanning when the remaining path becomes blocked.
+  Reliability across repeated trials has not yet been quantified.
+- Current demonstrations use manually selected RViz goals.
+- Costmap update timing and camera data transmission require
+  further investigation.
 - Moving obstacle trajectory prediction is outside the current scope.
 
-The next steps are to archive simulation results, document the
-implementation, and evaluate integration with the physical robot.
+The next steps are to implement ArUco-based destination identification
+on the physical robot, integrate marker-based goals with navigation,
+and conduct repeatable experiments to evaluate goal completion rate,
+navigation duration, replanning events, and final pose errors.
 
 ## 11. References and Acknowledgements
 
