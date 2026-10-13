@@ -149,6 +149,70 @@ Hardware setup, sensor configuration, and mapping instructions
 will be documented in a dedicated real-robot guide.
 ## 8. Real-Robot Deployment and Preliminary Results
 
+Preliminary tests have been conducted on the physical Pomona robot
+using an ARM64 ROS 2 Jazzy Docker environment. These tests cover
+LiDAR mapping, localization using the saved map, and costmap generation.
+
+### 8.1 Real-World Mapping
+
+![Occupancy grid constructed on the physical Pomona robot](docs/images/real map.png)
+
+A 2D occupancy grid was constructed from real LiDAR observations
+using SLAM Toolbox, with a resolution of 0.05 m per cell.
+
+The occupancy grid, map metadata, and serialized SLAM pose graph
+were saved for subsequent localization and testing.
+
+### 8.2 Physical Test Environment
+
+![Physical environment used for Pomona testing](docs/images/real environment.png)
+
+The physical environment shown above was used for the preliminary
+mapping and navigation tests.
+
+These tests provide an initial assessment of the system outside
+simulation; systematic performance evaluation is still pending.
+
+### 8.3 Costmap on the Real-World Map
+
+![Inflated costmap generated using the real-world map](docs/images/costmap_real.png)
+
+The saved real-world map was combined with live LiDAR observations
+to generate an inflated costmap.
+
+The inflated regions provide clearance around observed obstacles
+for path planning and path validation.
+### 8.4 RRT Navigation on the Physical Robot
+
+Preliminary navigation tests were conducted on the physical Pomona
+robot using the real-world map and inflated costmap.
+
+Both demonstrations use manually selected RViz goals.
+
+#### Static Obstacle Demonstration
+
+The robot follows an RRT-generated path around a static obstacle
+toward the selected goal.
+
+[Watch the real-robot static obstacle demonstration](https://www.youtube.com/watch?v=lCJOzrNftY8)
+
+#### Obstacle Replanning Demonstration
+
+The robot stops when an observed obstacle blocks the remaining
+path, replans, and resumes navigation toward the selected goal.
+
+[Watch the real-robot obstacle replanning demonstration](https://www.youtube.com/watch?v=3FvcT5MC94o)
+
+These demonstrations provide preliminary evidence of RRT planning,
+waypoint following, and obstacle-triggered replanning on the
+physical robot. Quantitative evaluation remains pending.
+
+### 8.5 Next Steps
+
+The next stage will focus on ArUco detection and marker-based
+destination identification on the physical robot, followed by
+integration with the navigation pipeline.
+
 ## 9. Experimental Evaluation
 
 The initial figures document mapping, obstacle inflation, and
