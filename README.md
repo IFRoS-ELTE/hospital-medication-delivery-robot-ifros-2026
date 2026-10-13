@@ -155,7 +155,7 @@ LiDAR mapping, localization using the saved map, and costmap generation.
 
 ### 8.1 Real-World Mapping
 
-![Occupancy grid constructed on the physical Pomona robot](docs/images/real map.png)
+![Occupancy grid constructed on the physical Pomona robot](docs/images/real_map.png)
 
 A 2D occupancy grid was constructed from real LiDAR observations
 using SLAM Toolbox, with a resolution of 0.05 m per cell.
@@ -165,7 +165,7 @@ were saved for subsequent localization and testing.
 
 ### 8.2 Physical Test Environment
 
-![Physical environment used for Pomona testing](docs/images/real environment.png)
+![Physical environment used for Pomona testing](docs/images/real_environment.png)
 
 The physical environment shown above was used for the preliminary
 mapping and navigation tests.
