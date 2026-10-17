@@ -186,7 +186,8 @@ the stand-off distance.
 The final goal heading faces the marker:
 
 ```math
-\theta_g = \operatorname{atan2}(m_y-g_y,\;m_x-g_x)
+\theta_g = \mathrm{atan2}(m_y - g_y,\; m_x - g_x)
+```
 ```
 
 The goal is checked against the inflated costmap before navigation.
