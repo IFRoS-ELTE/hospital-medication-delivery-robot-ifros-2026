@@ -149,9 +149,9 @@ of the marker position relative to the camera.
 
 The ideal pinhole projection model is:
 
-$$
+```math
 s\begin{bmatrix}u\\v\\1\end{bmatrix} = K\left(Rp_{\mathrm{marker}}+t\right)
-$$
+```
 
 Here, $K$ is the camera intrinsic matrix, while $R$ and $t$
 describe the marker pose relative to the camera.
@@ -161,9 +161,9 @@ Lens distortion is omitted from this expression for clarity.
 
 The marker position is transformed into the map frame:
 
-$$
+```math
 p_{\mathrm{map}} = R_{\mathrm{map}\leftarrow\mathrm{camera}}p_{\mathrm{camera}} + t_{\mathrm{map}\leftarrow\mathrm{camera}}
-$$
+```
 
 TF provides the coordinate transformations between the camera,
 robot, and map frames.
@@ -176,18 +176,18 @@ a configured horizontal stand-off distance.
 For horizontal marker position $m$, robot position $r$, and
 stand-off distance $d$, the geometric construction is:
 
-$$
+```math
 g = m - d\frac{m-r}{\lVert m-r\rVert}
-$$
+```
 
 This construction requires the robot–marker distance to exceed
 the stand-off distance.
 
 The final goal heading faces the marker:
 
-$$
+```math
 \theta_g = \operatorname{atan2}(m_y-g_y,\;m_x-g_x)
-$$
+```
 
 The goal is checked against the inflated costmap before navigation.
 RRT plans a path toward the goal, and the follower tracks the
