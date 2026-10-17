@@ -102,6 +102,7 @@ The implemented simulation pipeline includes:
 - Stand-off goal generation from the marker position.
 
 Demonstration videos and detailed results will be added progressively.
+
 ### 6.1 RRT Planning and Waypoint Following
 
 The planner generates a path from the robot pose to a manually selected
@@ -130,7 +131,75 @@ toward the goal.
 [Watch the dynamic obstacle demonstration](https://youtu.be/ZddsLquEFZQ)
 
 Both demonstrations use manually selected RViz goals.
-ArUco-based goal generation will be documented separately.
+ArUco detection and marker-based goal generation are described below.
+
+### 6.2 ArUco Detection and Marker-Based Goals
+
+ArUco markers identify delivery destinations. The visual pipeline
+detects the target marker, estimates its position, and transforms
+that position into the map frame for navigation goal generation.
+
+#### Detection Pipeline
+
+![ArUco detection pipeline](docs/images/aruco_detection_pipeline.png)
+
+The detector extracts the marker ID and image corners.
+Camera calibration and the known marker size support estimation
+of the marker position relative to the camera.
+
+The ideal pinhole projection model is:
+
+$$
+s\begin{bmatrix}u\\v\\1\end{bmatrix} = K\left(Rp_{\mathrm{marker}}+t\right)
+$$
+
+Here, $K$ is the camera intrinsic matrix, while $R$ and $t$
+describe the marker pose relative to the camera.
+Lens distortion is omitted from this expression for clarity.
+
+#### Coordinate Transformation
+
+The marker position is transformed into the map frame:
+
+$$
+p_{\mathrm{map}} = R_{\mathrm{map}\leftarrow\mathrm{camera}}p_{\mathrm{camera}} + t_{\mathrm{map}\leftarrow\mathrm{camera}}
+$$
+
+TF provides the coordinate transformations between the camera,
+robot, and map frames.
+
+#### Stand-Off Goal Generation
+
+A navigation goal is placed before the marker, maintaining
+a configured horizontal stand-off distance.
+
+For horizontal marker position $m$, robot position $r$, and
+stand-off distance $d$, the geometric construction is:
+
+$$
+g = m - d\frac{m-r}{\lVert m-r\rVert}
+$$
+
+This construction requires the robot–marker distance to exceed
+the stand-off distance.
+
+The final goal heading faces the marker:
+
+$$
+\theta_g = \operatorname{atan2}(m_y-g_y,\;m_x-g_x)
+$$
+
+The goal is checked against the inflated costmap before navigation.
+RRT plans a path toward the goal, and the follower tracks the
+waypoints and aligns the final heading.
+
+#### Simulation Result
+
+![ArUco detection result in simulation](docs/images/aruco_detection_simulation.png)
+
+The figure shows the ArUco detection result in simulation.
+The detected marker provides the visual reference for
+destination identification and marker-based goal generation.
 
 ## 7. Installation and Usage
 
@@ -148,6 +217,7 @@ while retaining its existing Ubuntu 18.04 and ROS 1 installation.
 
 Hardware setup, sensor configuration, and mapping instructions
 will be documented in a dedicated real-robot guide.
+
 ## 8. Real-Robot Deployment and Preliminary Results
 
 Preliminary tests have been conducted on the physical Pomona robot
@@ -183,6 +253,7 @@ to generate an inflated costmap.
 
 The inflated regions provide clearance around observed obstacles
 for path planning and path validation.
+
 ### 8.4 RRT Navigation on the Physical Robot
 
 Preliminary navigation tests were conducted on the physical Pomona
