@@ -279,11 +279,31 @@ These demonstrations provide preliminary evidence of RRT planning,
 waypoint following, and obstacle-triggered replanning on the
 physical robot. Quantitative evaluation remains pending.
 
-### 8.5 Next Steps
+### 8.5 ArUco Detection on the Physical Robot
 
-The next stage will focus on ArUco detection and marker-based
-destination identification on the physical robot, followed by
-integration with the navigation pipeline.
+ArUco detection and marker position estimation were tested using
+the RGB camera on the physical Pomona robot. The test uses
+marker ID 0 from the DICT_6X6_1000 dictionary, with a marker
+side length of 0.10 m.
+
+The video demonstrates marker detection on real camera images.
+This demonstration focuses on perception; integration with
+RRT navigation is evaluated separately.
+
+[Watch the real-robot ArUco detection video](docs/video/pomona_aruco_real.mp4)
+
+### 8.6 Integrated Perception and Navigation — Upcoming Results
+
+An initial real-robot trial demonstrated navigation toward an
+ArUco-based goal without additional obstacles.
+
+Further demonstrations will cover the complete pipeline:
+ArUco detection, marker-based goal generation, RRT planning,
+and waypoint following in the presence of static obstacles
+and obstacles introduced during motion.
+
+Videos will be added to document obstacle-triggered stopping,
+replanning, and navigation toward the delivery goal.
 
 ## 9. Experimental Evaluation
 
