@@ -290,7 +290,7 @@ The video demonstrates marker detection on real camera images.
 This demonstration focuses on perception; integration with
 RRT navigation is evaluated separately.
 
-[Watch the real-robot ArUco detection video](docs/video/pomona_aruco_real.mp4)
+[Watch the real-robot ArUco detection video](docs/video/pomona_aruco_real1.mp4)
 
 ### 8.6 Integrated Perception and Navigation — Upcoming Results
 
