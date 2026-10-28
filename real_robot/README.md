@@ -271,17 +271,3 @@ if needed, and restart the bridge, planner and follower before committing a
 new goal. Keep hardware bringup, localization, costmap and detector running
 if they remain healthy. Restarting the bridge alone does not clear the old
 goal retained by the planner.
-
-## Verification of This Export
-
-The release preparation checked Python syntax and local module dependencies
-and compared all eight Python files to the supplied robot ZIP. No node logic
-was changed. ROS and hardware execution were not repeated during packaging.
-See `SOURCE_SHA256SUMS` for source checksums.
-
-To link this guide from the repository's main README under Physical Robot:
-
-```markdown
-See the [Real-Robot Guide](real_robot/README.md) for the tested nodes,
-deployment layout, startup commands, and ArUco-based goal submission.
-```
