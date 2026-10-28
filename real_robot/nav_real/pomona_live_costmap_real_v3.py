@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-"""Faster real-robot adapter, preserving scan-time TF and freshness limits.
-
-Keep v2, the original live module and the OpenCV pomona_costmap.py together
-with this file in /bags/config/nav_real. Stop v2 before running v3.
-Uses batched finite-ray sampling and array('b') output, avoiding two full
-map Python-list conversions and the intermediate merged ROS message.
-No velocity commands. Source stamps, inflation and unknown blocking retained.
-"""
 import copy
 import math
 import time
