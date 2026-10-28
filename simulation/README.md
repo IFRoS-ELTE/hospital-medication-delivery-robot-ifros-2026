@@ -16,12 +16,12 @@ Frontier exploration is not included in this version.
 
 | Directory | Contents |
 |---|---|
-| scripts/ | Perception, costmap, planning and control nodes |
-| launch/ | Localization and complete navigation launches |
-| config/ | SLAM Toolbox and RViz configuration |
-| maps/ | Occupancy map and serialized SLAM pose graph |
-| models/ | ArUco marker model |
-| vendor_overrides/ | Modified robot description and simulation worlds |
+| scripts/ | Perception, costmap, planning and control nodes. |
+| launch/ | Localization and complete navigation launches. |
+| config/ | SLAM Toolbox and RViz configuration. |
+| maps/ | Occupancy map and serialized SLAM pose graph. |
+| models/ | ArUco marker model. |
+| vendor_overrides/ | Modified robot description and simulation worlds. |
 
 ## Environment
 
