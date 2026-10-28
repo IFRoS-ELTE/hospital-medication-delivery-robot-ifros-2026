@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-"""Real-robot costmap adapter; keep original simulation files unchanged.
-
-Requires pomona_live_costmap_real.py and pomona_costmap.py in this directory.
-Uses a bounded queue and exact scan-time TF without blocking the executor.
-Does not relax source-age limits, invent fresh timestamps, or send motion.
-No-return/invalid beams do not clear obstacles; finite measured rays do.
-"""
 import copy
 import math
 import time
