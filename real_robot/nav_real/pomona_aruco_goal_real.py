@@ -1,17 +1,3 @@
-#!/usr/bin/env python3
-"""Preview a stand-off goal; send it ONCE only through /pomona/aruco/commit_goal.
-
-Input: point_camera from pomona_aruco_real.py (ID 0, 10 cm by default).
-Run on the laptop with the existing live costmap and RRT. Start follower
-before committing a goal. This node never publishes velocities.
-
-After commit the destination remains fixed even if the marker disappears.
-Stopping this node does NOT cancel the planner or stop the follower.
-Stop the follower/use manual control to interrupt navigation. Restart this
-node between missions; it intentionally has no automatic rearming.
-Stand-off is horizontal centre-to-marker distance, along the initial
-robot-to-marker line, NOT marker-normal docking or bumper clearance.
-"""
 import math
 import time
 from collections import deque
