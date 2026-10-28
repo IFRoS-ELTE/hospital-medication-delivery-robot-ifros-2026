@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-"""Real robot inflation backend without SciPy.
-
-Install ONLY as /data/pomona/config/nav_real/pomona_costmap.py on Pomona.
-Keep the laptop/simulation pomona_costmap.py unchanged. Uses OpenCV precise
-Euclidean distance transform, blocked unknown cells and a blocked border.
-Adds 1 micrometre to the inflation threshold for float32 roundoff.
-"""
 import copy
 import math
 
