@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""RealSense ArUco ID 0 position probe. Never publishes navigation commands.
-
-Positions are marker centres, in metres. Consumers must check timestamps
-and /pomona/aruco/detected; previous points are not cleared on marker loss.
-Run inside Pomona's ROS container, with its existing camera bringup.
-"""
 import math
 import time
 
