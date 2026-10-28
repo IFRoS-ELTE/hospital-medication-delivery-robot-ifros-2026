@@ -212,11 +212,17 @@ workspace requirements, launch commands, and goal submission.
 
 ### 7.2 Physical Robot
 
-The physical Pomona robot uses an ARM64 ROS 2 Jazzy Docker environment
-while retaining its existing Ubuntu 18.04 and ROS 1 installation.
+The physical Pomona robot runs the perception and navigation nodes
+inside an ARM64 ROS 2 Jazzy Docker environment, while retaining
+its existing Ubuntu 18.04 and ROS 1 installation.
 
-Hardware setup, sensor configuration, and mapping instructions
-will be documented in a dedicated real-robot guide.
+See the [Real-Robot Guide](real_robot/README.md) for the tested
+nodes, dependencies, deployment layout, localization setup,
+and commands for ArUco detection, goal submission, RRT planning,
+and waypoint following.
+
+The guide assumes that the existing hardware bringup, sensor
+configuration, and saved map are available on the robot.
 
 ## 8. Real-Robot Deployment and Preliminary Results
 
