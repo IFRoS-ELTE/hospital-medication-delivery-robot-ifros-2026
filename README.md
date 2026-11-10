@@ -193,6 +193,31 @@ The goal is checked against the inflated costmap before navigation.
 RRT plans a path toward the goal, and the follower tracks the
 waypoints and aligns the final heading.
 
+### 6.3 Integrated ArUco-Guided Navigation in Simulation
+
+The final simulation stage integrates ArUco detection with navigation.
+The robot detects the delivery marker, estimates its position in the
+map frame, and generates a goal at a configured distance from the marker.
+The RRT planner uses the inflated costmap to find a path, and the
+follower tracks the waypoints and turns the robot to face the marker
+at the destination.
+
+#### Static Obstacle Demonstration
+
+An obstacle is already present when navigation starts. The planner
+finds a route around it, and the robot follows the path to the
+ArUco-based goal.
+
+[Watch ArUco-guided navigation around a static obstacle](https://youtu.be/LF4NQrMUpZU)
+
+#### Dynamic Obstacle Demonstration
+
+An obstacle is introduced while the robot is moving. When the updated
+costmap shows that the remaining path is blocked, the robot stops,
+replans, and follows the new path toward the same ArUco-based goal.
+
+[Watch ArUco-guided navigation with obstacle-triggered replanning](https://youtu.be/AlVZ5d2dU_M)
+
 #### Simulation Result
 
 ![ArUco detection result in simulation](docs/images/aruco_detection_simulation.png)
