@@ -193,6 +193,14 @@ The goal is checked against the inflated costmap before navigation.
 RRT plans a path toward the goal, and the follower tracks the
 waypoints and aligns the final heading.
 
+#### Simulation Result
+
+![ArUco detection result in simulation](docs/images/aruco_detection_simulation.png)
+
+The figure shows the ArUco detection result in simulation.
+The detected marker provides the visual reference for
+destination identification and marker-based goal generation.
+
 ### 6.3 Integrated ArUco-Guided Navigation in Simulation
 
 The final simulation stage integrates ArUco detection with navigation.
@@ -217,14 +225,6 @@ costmap shows that the remaining path is blocked, the robot stops,
 replans, and follows the new path toward the same ArUco-based goal.
 
 [Watch ArUco-guided navigation with obstacle-triggered replanning](https://youtu.be/AlVZ5d2dU_M)
-
-#### Simulation Result
-
-![ArUco detection result in simulation](docs/images/aruco_detection_simulation.png)
-
-The figure shows the ArUco detection result in simulation.
-The detected marker provides the visual reference for
-destination identification and marker-based goal generation.
 
 ## 7. Installation and Usage
 
