@@ -251,9 +251,14 @@ configuration, and saved map are available on the robot.
 
 ## 8. Real-Robot Deployment and Preliminary Results
 
-Preliminary tests have been conducted on the physical Pomona robot
-using an ARM64 ROS 2 Jazzy Docker environment. These tests cover
-LiDAR mapping, localization using the saved map, and costmap generation.
+The system was deployed on the physical Pomona robot using an
+ARM64 ROS 2 Jazzy Docker environment. Tests cover LiDAR mapping,
+localization, live costmap generation, ArUco detection, and
+integrated navigation toward marker-based goals.
+
+The demonstrations include navigation without additional obstacles,
+around static obstacles, and with obstacle-triggered replanning
+during motion.
 
 ### 8.1 Real-World Mapping
 
@@ -323,46 +328,105 @@ RRT navigation is evaluated separately.
 
 [Watch the real-robot ArUco detection video](https://youtu.be/zPUx9dybaDI)
 
-### 8.6 Integrated Perception and Navigation — Upcoming Results
+### 8.6 Integrated Perception and Navigation on the Physical Robot
 
-An initial real-robot trial demonstrated navigation toward an
-ArUco-based goal without additional obstacles.
+The complete perception and navigation pipeline was tested on the
+physical Pomona robot. ArUco detection provides the marker position,
+which is transformed into the map frame to generate a stand-off goal.
+RRT plans a path using the inflated costmap, and the follower tracks
+the waypoints and aligns the final heading toward the marker.
 
-Further demonstrations will cover the complete pipeline:
-ArUco detection, marker-based goal generation, RRT planning,
-and waypoint following in the presence of static obstacles
-and obstacles introduced during motion.
+The video presents three scenarios:
 
-Videos will be added to document obstacle-triggered stopping,
-replanning, and navigation toward the delivery goal.
+- **No additional obstacles:** the robot navigates to the ArUco-based
+  goal and stops at the configured stand-off distance.
+- **Static obstacle:** the robot follows a planned route around an
+  obstacle already present before navigation starts.
+- **Dynamic obstacle:** an obstacle is introduced during motion.
+  The robot stops when the remaining path becomes blocked,
+  replans, and continues toward the same goal.
+
+[Watch the integrated real-robot demonstrations](https://youtu.be/EfUYS0Sq2IQ)
+
+These demonstrations show the complete pipeline operating on the
+physical robot. Obstacle handling relies on live costmap updates
+and reactive replanning; it does not predict obstacle trajectories.
+Quantitative performance and reliability across repeated trials
+have not yet been evaluated.
 
 ## 9. Experimental Evaluation
 
-The initial figures document mapping, obstacle inflation, and
-live costmap updates.
+The project was evaluated through qualitative demonstrations in
+simulation and on the physical Pomona robot. Figures document
+mapping, obstacle inflation, live costmap updates, and ArUco detection.
+Videos demonstrate planning, waypoint following, and integrated
+navigation toward marker-based goals.
 
-Further evaluation will report:
+The integrated real-robot demonstration covers three scenarios:
+
+| Scenario | Demonstrated behavior |
+|---|---|
+| No additional obstacles | Navigation toward an ArUco-based goal and stopping at the configured stand-off distance. |
+| Static obstacle | Path planning and waypoint following around an obstacle present before navigation. |
+| Obstacle introduced during motion | Stopping when the remaining path becomes blocked, replanning, and continuing toward the goal. |
+
+[Watch the integrated real-robot evaluation](https://youtu.be/EfUYS0Sq2IQ)
+
+The demonstrations provide qualitative evidence that the perception
+and navigation modules operate together on the physical robot.
+They do not establish a statistical success rate or measured
+navigation accuracy.
+
+Quantitative evaluation has not yet been conducted. Possible metrics
+for a future repeated-trial study include:
 
 - Goal completion rate.
-- Navigation duration.
+- Navigation duration and travelled distance.
 - Number of replanning events.
 - Final position and heading errors.
 
-## 10. Limitations and Next Steps
+## 10. Limitations and Future Improvements
 
-- Quantitative evaluation is still pending.
-- Real-robot tests have demonstrated RRT navigation around static
-  obstacles and replanning when the remaining path becomes blocked.
-  Reliability across repeated trials has not yet been quantified.
-- Current demonstrations use manually selected RViz goals.
-- Costmap update timing and camera data transmission require
-  further investigation.
-- Moving obstacle trajectory prediction is outside the current scope.
+The implemented pipeline integrates ArUco detection, marker-based
+goal generation, live costmap updates, RRT planning, and waypoint
+following in simulation and on the physical Pomona robot.
 
-The next steps are to implement ArUco-based destination identification
-on the physical robot, integrate marker-based goals with navigation,
-and conduct repeatable experiments to evaluate goal completion rate,
-navigation duration, replanning events, and final pose errors.
+The current limitations are:
+
+- Evaluation is based on selected demonstrations rather than a
+  systematic set of repeated trials.
+- Navigation depends on accurate localization, calibrated sensor
+  transforms, synchronized clocks, and sufficiently fresh data.
+- Delayed camera, LiDAR, TF, or costmap data can interrupt navigation
+  and cause temporary stops.
+- The target marker must be visible and provide stable observations
+  before a navigation goal can be committed.
+- After commitment, the destination remains fixed; moving or losing
+  the marker does not automatically update or cancel the goal.
+- Obstacle handling uses reactive stopping and replanning.
+  Moving obstacle trajectories are not predicted.
+- Tests were conducted in a laboratory environment. Operation in
+  a working hospital has not been evaluated.
+
+### 10.1 Future Improvements
+
+Potential extensions include:
+
+- **More consistent data delivery:** improve sensor processing and
+  communication timing to reduce interruptions while retaining
+  freshness checks.
+- **Localization robustness:** evaluate different starting poses
+  and investigate localization drift in challenging environments.
+- **Automatic marker search:** add exploration or a controlled
+  search behavior when the destination marker is not visible.
+- **Multiple delivery destinations:** support several marker IDs
+  and a sequence of delivery tasks.
+- **Smoother navigation:** investigate path smoothing and tracking
+  improvements while preserving obstacle clearance.
+- **Dynamic obstacle handling:** investigate obstacle tracking and
+  motion prediction beyond the current reactive approach.
+- **Systematic evaluation:** conduct repeated trials across
+  different layouts, lighting conditions, and obstacle placements.
 
 ## 11. References and Acknowledgements
 
